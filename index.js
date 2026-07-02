@@ -6,13 +6,17 @@ import authRouter from "./routes/auth.route.js";
 const app = express();
 
 dotenv.config();
-app.use(express.json())
+app.use(express.json());
 
-app.use(authRouter)
+app.use(authRouter);
 
 const PORT = process.env.PORT;
 
-app.listen(PORT, () => {
+const startServer = () => {
   connectDB();
-  console.log(`Serve is running at http://localhost:${PORT}`);
-});
+  app.listen(PORT, () => {
+    console.log(`Serve is running at http://localhost:${PORT}`);
+  });
+};
+
+startServer();
